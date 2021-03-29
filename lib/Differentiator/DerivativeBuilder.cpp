@@ -734,6 +734,9 @@ namespace clad {
                                        CLAD_COMPAT_CLANG10_FunctionDecl_Create_ExtraParams(FD->getTrailingRequiresClause())
                                        );
     }
+    for (const auto *Attr : FD->attrs()) {
+      derivedFD->addAttr(Attr->clone(m_Context));
+    }
     m_Derivative = derivedFD;
 
     llvm::SmallVector<ParmVarDecl*, 4> params;
