@@ -110,14 +110,8 @@ namespace clad {
       // allocation properly.
       for (; first != last; ++first, (void)++current) {
         auto new_data = ::new (const_cast<void*>(
-            static_cast<const volatile void*>(addressof(current))))
+            static_cast<const volatile void*>(addressof(*current))))
             T(std::move(*first));
-        if (!new_data) {
-          // clean up the memory mess just in case!
-          destroy(d_first, current);
-          printf("Allocation failure during tape resize! Aborting.");
-          trap(EXIT_FAILURE);
-        }
       }
     }
     /// Initial capacity (allocated whenever a value is pushed into empty tape).

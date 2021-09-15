@@ -14,21 +14,6 @@
 #define CUDA_HOST_DEVICE
 #endif
 
-// Define trap function that is a CUDA compatible replacement for
-// exit(int code) function
-#ifdef __CUDACC__
-__device__ void trap(int code) {
-  asm("trap;");
-}
-__host__ void trap(int code) {
-  exit(code);
-}
-#else
-void trap(int code) {
-  exit(code);
-}
-#endif
-
 #ifdef  __CUDACC__
 template<typename T>
 __device__ T* addressof(T& r) {
