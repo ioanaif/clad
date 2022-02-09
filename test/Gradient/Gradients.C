@@ -877,7 +877,7 @@ float running_sum(float* p, int n) {
 //CHECK-NEXT:     clad::tape<int> _t3 = {};
 //CHECK-NEXT:     int _t5;
 //CHECK-NEXT:     _t0 = 0;
-//CHECK-NEXT:     for (int i = 1; i < n; i++) {
+//CHECK-NEXT:     for (int i0 = n - 1; i0 >= 1; i0--) {
 //CHECK-NEXT:         _t0++;
 //CHECK-NEXT:         p[clad::push(_t1, i)] += p[clad::push(_t3, i - 1)];
 //CHECK-NEXT:     }

@@ -20,7 +20,7 @@ double f1(double x) {
 //CHECK-NEXT:       clad::tape<double> _t2 = {};
 //CHECK-NEXT:       double t = 1;
 //CHECK-NEXT:       _t0 = 0;
-//CHECK-NEXT:       for (int i = 0; i < 3; i++) {
+//CHECK-NEXT:       for (int i0 = 3 - 1; i0 >= 0; i0--) {
 //CHECK-NEXT:           _t0++;
 //CHECK-NEXT:           clad::push(_t2, t);
 //CHECK-NEXT:           t *= clad::push(_t1, x);

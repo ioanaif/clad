@@ -23,7 +23,7 @@ float func(float* p, int n) {
 //CHECK-NEXT:     float sum = 0;
 //CHECK-NEXT:     _EERepl_sum0 = sum;
 //CHECK-NEXT:     _t0 = 0;
-//CHECK-NEXT:     for (int i = 0; i < n; i++) {
+//CHECK-NEXT:     for (int i0 = n - 1; i0 >= 0; i0--) {
 //CHECK-NEXT:         _t0++;
 //CHECK-NEXT:         sum += p[clad::push(_t1, i)];
 //CHECK-NEXT:         clad::push(_EERepl_sum1, sum);

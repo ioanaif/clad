@@ -115,7 +115,7 @@
 //CHECK_FLOAT_SUM:     float sum = 0.;
 //CHECK_FLOAT_SUM:     _EERepl_sum0 = sum;
 //CHECK_FLOAT_SUM:     _t0 = 0;
-//CHECK_FLOAT_SUM:     for (unsigned int i = 0; i < n; i++) {
+//CHECK_FLOAT_SUM:     for (unsigned int i0 = n - 1U; i0 >= 0; i0--) {
 //CHECK_FLOAT_SUM:         _t0++;
 //CHECK_FLOAT_SUM:         sum = sum + x;
 //CHECK_FLOAT_SUM:         clad::push(_EERepl_sum1, sum);

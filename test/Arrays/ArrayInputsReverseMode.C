@@ -20,7 +20,7 @@ double addArr(double *arr, int n) {
 //CHECK-NEXT:     clad::tape<int> _t1 = {};
 //CHECK-NEXT:     double ret = 0;
 //CHECK-NEXT:     _t0 = 0;
-//CHECK-NEXT:     for (int i = 0; i < n; i++) {
+//CHECK-NEXT:     for (int i0 = n - 1; i0 >= 0; i0--) {
 //CHECK-NEXT:         _t0++;
 //CHECK-NEXT:         ret += arr[clad::push(_t1, i)];
 //CHECK-NEXT:     }
