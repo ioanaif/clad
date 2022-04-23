@@ -1008,11 +1008,21 @@ namespace clad {
     } else {
       SS.Extend(m_Context, NSD, noLoc, noLoc);
     }
-
+    // llvm::errs()<<"Trying to find: "<<DNI.getAsString()<<"\n";
     LookupResult R(m_Sema, DNI, Sema::LookupOrdinaryName);
     if (DC)
       m_Sema.LookupQualifiedName(R, DC);
     Expr* OverloadedFn = 0;
+    // if (R.empty())
+    //   llvm::errs()<<"R is empty!!\n";
+    // else {
+      // llvm::errs()<<"Dumping found Declarations:\n";
+      // for (auto iter = R.begin(); iter != R.end(); ++iter) {
+      //   iter->dumpColor();
+      //   llvm::errs()<<"\n";
+      // }
+      // llvm::errs()<<"\n";
+    // }
     if (!R.empty()) {
       // FIXME: We should find a way to specify nested name specifier
       // after finding the custom derivative.
@@ -1022,12 +1032,19 @@ namespace clad {
       llvm::MutableArrayRef<Expr*> MARargs =
           llvm::MutableArrayRef<Expr*>(CallArgs);
 
+      // llvm::errs()<<"Dumping call arguments:\n";
+      // for (auto arg : MARargs) {
+      //   arg->dumpColor();
+      //   llvm::errs()<<"\n";
+      // }
+      // llvm::errs()<<"\n";
       SourceLocation Loc;
 
       if (noOverloadExists(UnresolvedLookup, MARargs)) {
+        // llvm::errs()<<"Unable to find custom derivative overload!!\n";
         return 0;
       }
-
+      // llvm::errs()<<"custom derivative overload found!!\n";
       OverloadedFn =
           m_Sema.ActOnCallExpr(S, UnresolvedLookup, Loc, MARargs, Loc).get();
     }
